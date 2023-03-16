@@ -22,6 +22,7 @@ function submitForm(e) {
   var msgContent = getElementVal("msgContent");
 
   saveMessages(name, emailid, msgContent);
+  alert("Data successfully pushed into database!!");
   document.getElementById("MessageForm").reset();
 }
 
