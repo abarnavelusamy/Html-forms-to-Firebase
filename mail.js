@@ -28,7 +28,7 @@ function submitForm(e) {
 
 const saveMessages = (name, emailid, msgContent) => {
     
-   db.collection("messages").add({
+   firebase.firestore().collection("messages").add({
     name: name,
     emailid: emailid,
     msgContent: msgContent
