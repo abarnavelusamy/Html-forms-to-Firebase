@@ -22,11 +22,25 @@ function submitForm(e) {
   var msgContent = getElementVal("msgContent");
 
   saveMessages(name, emailid, msgContent);
-  alert("Data successfully pushed into database!!");
+  alert("Data successfully pushed into Realtime database!!");
   document.getElementById("MessageForm").reset();
 }
 
 const saveMessages = (name, emailid, msgContent) => {
+    
+   db.collection("messages").add({
+    name: name,
+    emailid: emailid,
+    msgContent: msgContent
+  })
+  .then((docRef) => {
+       alert("Data successfully pushed to Firestore Database");
+    console.log("Document written with ID: ", docRef.id);
+  })
+  .catch((error) => {
+    console.error("Error adding document: ", error);
+  });
+    
   var newContactForm = contactFormDB.push();
 
   newContactForm.set({
